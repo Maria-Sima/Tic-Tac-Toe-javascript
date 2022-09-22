@@ -94,7 +94,7 @@ function getRandomAIMove() {
 
 function isBoardFull() {
   if (Moves == 9  && gameWin == false) {
-    gameDisplay.innerText = "Bot wins";
+    gameDisplay.innerText = "Draw";
   }
 }
 isBoardFull();
