@@ -20,17 +20,20 @@ const gameDisplay = document.querySelector("#game-display");
 
 function winningCondition(tiles) {
   for (let i = 0; i < 8; i++) {
+    console.log("winningCondition");
     if (
-      tiles[winConditions[i][0]].innerText == "X" &&
       tiles[winConditions[i][1]].innerText == "X" &&
-      tiles[winConditions[i][2]].innerText == "X"
+      tiles[winConditions[i][2]].innerText == "X" &&
+      tiles[winConditions[i][3]].innerText == "X"
     ) {
+      console.log("winningCondition1");
       gameDisplay.innerText = "X wins!";
       gameWin = true;
     }
     return true;
   }
 }
+winningCondition();
 const playerDisplay = document.querySelector(".display-player");
 const resetButton = document.querySelector("#reset");
 const announcer = document.querySelector(".announcer");
@@ -77,17 +80,15 @@ function getRandomAIMove() {
     let a = Math.floor(Math.random() * 8);
     if (!tiles[a].textContent) {
       tiles[a].innerText = "0";
+
       cont = false;
     }
   }
 }
 
 function isBoardFull() {
-  if (Moves == 9 && gameWin==false) {
-    console.log(" board full true");
-    alert("It's a tie!");
-  } else {
-    console.log("board full false");
+  if (Moves == 9 && gameWin == false) {
+    gameDisplay.innerText = "Bot wins";
   }
 }
 isBoardFull();
@@ -101,7 +102,7 @@ function main() {
   isBoardFull();
   winningCondition(tiles);
   //   changePlayer();
-  getRandomAIMove();
+  AI();
 }
 function AI() {
   getRandomAIMove();
