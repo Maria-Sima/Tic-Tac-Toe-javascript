@@ -1,7 +1,8 @@
 function userAction(tile, index) {
   console.log(index);
   tile.textContent = `${currentPlayer}`;
-  changePlayer();
+  winningCondition(tiles);
+
   // TODO Handle when the user clicks on a tile
 }
 const winConditions = [
@@ -19,21 +20,34 @@ console.log(tiles[4]);
 const gameDisplay = document.querySelector("#game-display");
 
 function winningCondition(tiles) {
-  for (let i = 0; i < 8; i++) {
-    console.log("winningCondition");
-    if (
-      tiles[winConditions[i][1]].innerText == "X" &&
-      tiles[winConditions[i][2]].innerText == "X" &&
-      tiles[winConditions[i][3]].innerText == "X"
-    ) {
-      console.log("winningCondition1");
-      gameDisplay.innerText = "X wins!";
-      gameWin = true;
-    }
-    return true;
+  //   for (let i = 0; i < 8; i++) {
+  //     console.log("winningCondition");
+  //     if (tiles[winConditions[i][0]].innerText == "X" && tiles[winConditions[i][1]].innerText == "X" && tiles[winConditions[i][2]].innerText == "X") {
+  //       gameDisplay.innerText = "X wins!";
+
+  //     }
+  //     return true;
+  //   }
+  // }
+
+  const won = winConditions
+    .map(function (a) {
+      return (
+        tiles[a[0]].innerText == tiles[a[1]].innerText &&
+        tiles[a[1]].innerText == tiles[a[2]].innerText &&
+        tiles[a[0]].innerText.trim() !== "" &&
+        tiles[a[1]].innerText.trim() !== "" &&
+        tiles[a[2]].innerText.trim() !== ""
+      );
+    })
+    .some(function (x) {
+      return x === true;
+    });
+
+  if (won) {
+    alert(currentPlayer);
   }
 }
-winningCondition();
 const playerDisplay = document.querySelector(".display-player");
 const resetButton = document.querySelector("#reset");
 const announcer = document.querySelector(".announcer");
@@ -100,13 +114,14 @@ function resetBoard() {
 
 function main() {
   isBoardFull();
-  winningCondition(tiles);
+  winningConditions(tiles);
   //   changePlayer();
   AI();
 }
 function AI() {
   getRandomAIMove();
   easyWin();
+
   blockLose();
 }
 function easyWin(index) {
@@ -116,22 +131,20 @@ function easyWin(index) {
       tiles[winConditions[i][1]].innerText == "0" &&
       tiles[winConditions[i][2]].innerText == ""
     ) {
-      tiles[i][2].textContent = "0";
+      tiles[winConditions[i][2]].innerText = "0";
       gameDisplay.innerText = "Bot wins";
-    }
-    if (
+    } else if (
       tiles[winConditions[i][0]].innerText == "0" &&
       tiles[winConditions[i][2]].innerText == "0" &&
-      tiles[winConditions[i][2]].innerText == ""
+      tiles[winConditions[i][1]].innerText == ""
     ) {
-      tiles[i][1].textContent = "0";
-    }
-    if (
+      tiles[winConditions[i][1]].innerText = "0";
+    } else if (
       tiles[winConditions[i][2]].innerText == "0" &&
       tiles[winConditions[i][1]].innerText == "0" &&
       tiles[winConditions[i][2]].innerText == ""
     ) {
-      tiles[i][0].textContent = "0";
+      tiles[winConditions[i][2]].innerText = "0";
     }
   }
 }
@@ -142,21 +155,19 @@ function blockLose(index) {
       tiles[winConditions[i][1]].innerText == "X" &&
       tiles[winConditions[i][2]].innerText == ""
     ) {
-      tiles[i][2].textContent = "0";
-    }
-    if (
+      tiles[winConditions[i][2]].innerText = "0";
+    } else if (
       tiles[winConditions[i][0]].innerText == "X" &&
       tiles[winConditions[i][2]].innerText == "X" &&
-      tiles[winConditions[i][2]].innerText == ""
+      tiles[winConditions[i][1]].innerText == ""
     ) {
-      tiles[i][1].textContent = "0";
-    }
-    if (
+      tiles[winConditions[i][1]].innerText = "0";
+    } else if (
       tiles[winConditions[i][2]].innerText == "X" &&
       tiles[winConditions[i][1]].innerText == "X" &&
-      tiles[winConditions[i][2]].innerText == ""
+      tiles[winConditions[i][0]].innerText == ""
     ) {
-      tiles[i][0].textContent = "0";
+      tiles[winConditions[i][0]].innerText = "0";
     }
   }
 }
