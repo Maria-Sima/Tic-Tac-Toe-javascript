@@ -15,7 +15,7 @@ function userAction(tile, index) {
       tiles[0].innerText == tiles[2].innerText &&
       currentPlayer == tiles[2].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     if (
@@ -23,7 +23,7 @@ function userAction(tile, index) {
       tiles[3].innerText == tiles[5].innerText &&
       currentPlayer == tiles[5].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     if (
@@ -31,7 +31,7 @@ function userAction(tile, index) {
       tiles[6].innerText == tiles[8].innerText &&
       currentPlayer == tiles[8].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     // vertical
@@ -40,7 +40,7 @@ function userAction(tile, index) {
       tiles[0].innerText == tiles[6].innerText &&
       currentPlayer == tiles[6].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     if (
@@ -48,7 +48,7 @@ function userAction(tile, index) {
       tiles[4].innerText == tiles[7].innerText &&
       currentPlayer == tiles[7].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     if (
@@ -56,7 +56,7 @@ function userAction(tile, index) {
       tiles[5].innerText == tiles[8].innerText &&
       currentPlayer == tiles[8].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     // diagonal
@@ -65,7 +65,7 @@ function userAction(tile, index) {
       tiles[4].innerText == tiles[8].innerText &&
       currentPlayer == tiles[8].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     if (
@@ -73,7 +73,7 @@ function userAction(tile, index) {
       tiles[4].innerText == tiles[6].innerText &&
       currentPlayer == tiles[6].innerText
     ) {
-      alert("Player " + currentPlayer + " " + "Won!");
+      alert("Humanity won");
       return true;
     }
     return false;
@@ -107,18 +107,7 @@ function userAction(tile, index) {
     tiles.add(currentPlayer);
   }
   
-//   function changePlayer() {
-//     if (currentPlayer == "X") {
-//       currentPlayer = "0";
-//       ind = "0";
-//       playerDisplay.innerHTML = "O";
-//     } else {
-//       currentPlayer = "X";
-//       ind = "X";
-//       playerDisplay.innerHTML = "X";
-//     }
-    // announcer.textContent = `${currentPlayer}s turn`;
-//   }
+
   
   function userAction(tile, index) {
     console.log(index);

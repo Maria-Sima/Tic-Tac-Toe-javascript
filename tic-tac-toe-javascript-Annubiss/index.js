@@ -62,7 +62,7 @@
       currentPlayer = "X";
       ind = "X";
     }
-    announcer.textContent = `${currentPlayer}s turn`;
+    playerDisplay.textContent = `${currentPlayer}`;
   }
   
   function userAction(tile, index) {
